@@ -7,61 +7,61 @@ document.addEventListener('DOMContentLoaded', () => {
         showCursor: true
     });
 
-    particlesJS("particles-js", {
-        particles: {
-            number: { value: 100, density: { enable: true, value_area: 800 } },
-            color: { value: "#00ffff" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5, random: false },
-            size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: "#00ffff", opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
-        },
-        interactivity: {
-            detect_on: "window",
-            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
-            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-        },
-        retina_detect: true
-    });
+    // particlesJS("particles-js", {
+    //     particles: {
+    //         number: { value: 100, density: { enable: true, value_area: 800 } },
+    //         color: { value: "#00ffff" },
+    //         shape: { type: "circle" },
+    //         opacity: { value: 0.5, random: false },
+    //         size: { value: 3, random: true },
+    //         line_linked: { enable: true, distance: 150, color: "#00ffff", opacity: 0.4, width: 1 },
+    //         move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+    //     },
+    //     interactivity: {
+    //         detect_on: "window",
+    //         events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+    //         modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+    //     },
+    //     retina_detect: true
+    // });
 
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
         header.classList.toggle('scrolled', window.scrollY > 0);
     });
 
-    const projectsSection = document.querySelector('.projects-section');
-    const projectsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const projectCards = document.querySelectorAll('.project-card');
-                projectCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-                projectsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
+    // const projectsSection = document.querySelector('.projects-section');
+    // const projectsObserver = new IntersectionObserver((entries) => {
+    //     entries.forEach(entry => {
+    //         if (entry.isIntersecting) {
+    //             const projectCards = document.querySelectorAll('.project-card');
+    //             projectCards.forEach((card, index) => {
+    //                 setTimeout(() => {
+    //                     card.style.opacity = '1';
+    //                     card.style.transform = 'translateY(0)';
+    //                 }, index * 100);
+    //             });
+    //             projectsObserver.unobserve(entry.target);
+    //         }
+    //     });
+    // }, { threshold: 0.5 });
 
-    projectsObserver.observe(projectsSection);
+    // projectsObserver.observe(projectsSection);
 
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const project = {
-                title: card.querySelector('h3').textContent,
-                image: card.querySelector('img').src,
-                description: 'This is a sample project description. Replace this with actual project details.',
-                skills: Array.from(card.querySelectorAll('.skill-tag')).map(tag => tag.textContent),
-                github: card.querySelector('.project-link[href*="github"]').href,
-                demo: card.querySelector('.project-link:not([href*="github"])').href
-            };
-            openModal(project);
-        });
-    });
+    // const projectCards = document.querySelectorAll('.project-card');
+    // projectCards.forEach(card => {
+    //     card.addEventListener('click', () => {
+    //         const project = {
+    //             title: card.querySelector('h3').textContent,
+    //             image: card.querySelector('img').src,
+    //             description: 'This is a sample project description. Replace this with actual project details.',
+    //             skills: Array.from(card.querySelectorAll('.skill-tag')).map(tag => tag.textContent),
+    //             github: card.querySelector('.project-link[href*="github"]').href,
+    //             demo: card.querySelector('.project-link:not([href*="github"])').href
+    //         };
+    //         openModal(project);
+    //     });
+    // });
 
     const animateSkillBars = () => {
         const skillBars = document.querySelectorAll('.skill-progress');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bar.style.width = '0%';
             setTimeout(() => {
                 bar.style.width = targetWidth;
-            }, 100);
+            }, 500);
         });
     };
 
@@ -84,6 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.5 });
 
+    skillsSection.addEventListener('scroll', () => {
+        animateSkillBars();
+    });
     skillsObserver.observe(skillsSection);
 
     const skillItems = document.querySelectorAll('.skill-item');
