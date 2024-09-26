@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         typeSpeed: 50,
         backSpeed: 30,
         loop: true,
-        showCursor: false
+        showCursor: true
     });
 
     particlesJS("particles-js", {
