@@ -84,9 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.5 });
 
-    skillsSection.addEventListener('scroll', () => {
-        animateSkillBars();
-    });
     skillsObserver.observe(skillsSection);
 
     const skillItems = document.querySelectorAll('.skill-item');
