@@ -48,8 +48,8 @@
                 <span id="typed-text"></span>
             </h2>
             <div>
-                <a href="" class="btn">Read Resume</a>
-                <a href="" download class="btn">Download Resume</a>
+                <a href="" class="btn read-link">Read Resume</a>
+                <a href="" download class="btn download-link">Download Resume</a>
             </div>
         </div>
     </section>
@@ -61,10 +61,10 @@
                 <div class="about-text">
                     <p>Hi there! I&apos;m Rida Labbiz, a passionate Full Stack Developer with a keen eye for creating elegant solutions in the least amount of time. With a strong foundation in both front-end and back-end technologies, I strive to build efficient, scalable, and user-friendly applications.</p>
                     <ul class="about-points">
-                        <li>🚀 2+ years of experience in web development</li>
-                        <li>💡 Specialized in JavaScript, React, Python and Django</li>
-                        <li>🌟 Committed to writing clean, maintainable code</li>
-                        <li>🤝 Excellent team player with strong communication skills</li>
+                        <div><li>🚀 2+ years of experience in web development</li></div>
+                        <div><li>💡 Specialized in JavaScript, React, Python and Django</li></div>
+                        <div><li>🌟 Committed to writing clean, maintainable code</li></div>
+                        <div><li>🤝 Excellent team player with strong communication skills</li></div>
                     </ul>
                 </div>
                 <div class="about-image">
@@ -268,22 +268,22 @@
         <div class="container">
             <h2 class="section-title">Services</h2>
             <div class="services-grid">
-                <div class="service-item">
+                <div class="service-item service-item-up">
                     <i class="fas fa-laptop-code service-icon"></i>
                     <h3>Web Development</h3>
                     <p>Custom websites and web applications tailored to your needs.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item service-item-down">
                     <i class="fas fa-mobile-alt service-icon"></i>
                     <h3>Mobile App Development</h3>
                     <p>Native and cross-platform mobile applications for iOS and Android.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item service-item-up">
                     <i class="fas fa-server service-icon"></i>
                     <h3>Backend Development</h3>
                     <p>Scalable and secure server-side solutions and APIs.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item service-item-down">
                     <i class="fas fa-database service-icon"></i>
                     <h3>Database Design</h3>
                     <p>Efficient and optimized database structures for your applications.</p>
@@ -296,22 +296,22 @@
         <div class="container">
             <h2 class="section-title">Education & Certifications</h2>
             <div class="education-timeline">
-                <div class="education-item">
+                <div class="education-item education-item-right">
                     <div class="education-date">2018 - 2022</div>
                     <h3>Bachelor of Science in Computer Science</h3>
                     <p>Stanford University</p>
                 </div>
-                <div class="education-item">
+                <div class="education-item education-item-left">
                     <div class="education-date">2023</div>
                     <h3>AWS Certified Solutions Architect</h3>
                     <p>Amazon Web Services</p>
                 </div>
-                <div class="education-item">
+                <div class="education-item education-item-right">
                     <div class="education-date">2022</div>
                     <h3>Google Cloud Professional Developer</h3>
                     <p>Google Cloud Platform</p>
                 </div>
-                <div class="education-item">
+                <div class="education-item education-item-left">
                     <div class="education-date">2021</div>
                     <h3>Machine Learning Specialization</h3>
                     <p>Coursera - Stanford University</p>
@@ -368,17 +368,165 @@
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
         // Initialize ScrollReveal
-        ScrollReveal().reveal('.project-card', {
-            duration: 1000, // Animation duration in milliseconds
-            distance: '50px', // Distance from the original position
-            easing: 'ease-in-out', // Easing function
-            interval: 0 // Delay between each reveal (optional)
+        window.sir = ScrollReveal({duration: 2000});
+
+        sir.reveal('.hero-name', {
+            origin: 'top',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
         });
+
+        sir.reveal('.hero-title', {
+            origin: 'bottom',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('a.read-link', {
+            origin: 'left',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('a.download-link', {
+            origin: 'right',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+
+
+        sir.reveal('.about-text p', {
+            origin: 'top',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.about-points div', {
+            origin: 'right',
+            delay: 100,
+            reset: true,
+            distance: '200px',
+            easing: 'ease-in-out',
+            interval: 500,
+            mobile: true
+        });
+
+        sir.reveal('.about-image', {
+            origin: 'right',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.project-card', { // Animation duration in milliseconds
+            origin: 'bottom', // 'bottom', 'left', 'top', 'right'
+            delay: 100, // Time in milliseconds
+            reset: true,
+            distance: '100px', // Distance from the original position
+            easing: 'ease-in-out', // Easing function
+            interval: 100, // Delay between each element
+            mobile: true // true to reveal on mobile
+        });
+
+        sir.reveal('.skill-item', {
+            origin: 'top',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.service-item-up', {
+            origin: 'top',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.service-item-down', {
+            origin: 'bottom',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.education-item-right', {
+            origin: 'right',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.education-item-left', {
+            origin: 'left',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.contact-form', {
+            origin: 'left',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
+        sir.reveal('.contact-info', {
+            origin: 'right',
+            delay: 100,
+            reset: true,
+            distance: '100px',
+            easing: 'ease-in-out',
+            interval: 100,
+            mobile: true
+        });
+
     </script>
 
 </body>
