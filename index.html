@@ -370,5 +370,16 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script type="module" src="script.js"></script>
 
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        // Initialize ScrollReveal
+        ScrollReveal().reveal('.project-card', {
+            duration: 1000, // Animation duration in milliseconds
+            distance: '50px', // Distance from the original position
+            easing: 'ease-in-out', // Easing function
+            interval: 0 // Delay between each reveal (optional)
+        });
+    </script>
+
 </body>
 </html>
