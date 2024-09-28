@@ -9,6 +9,21 @@
     --header-bg: #111111;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+    transition: all .5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(61, 62, 66, .5);
+    border-radius: 5px;
+}
+
 * {
     margin: 0;
     padding: 0;
