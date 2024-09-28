@@ -174,19 +174,31 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', adjustParticles);
     adjustParticles();
 
-    // Responsive image loading
-    function loadResponsiveImages() {
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            if (window.innerWidth <= 768) {
-                img.src = img.src.replace('.jpg', '-small.jpg');
-            } else {
-                img.src = img.src.replace('-small.jpg', '.jpg');
-            }
-        });
-    }
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-    window.addEventListener('resize', loadResponsiveImages);
-    loadResponsiveImages();
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.opacity = "1";
+        } else {
+            scrollToTopBtn.style.opacity = "0";
+        }
+    };
+    
+    // Smooth scroll function
+    function smoothScrollToTop() {
+        const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        if (currentScroll > 0) {
+            window.requestAnimationFrame(smoothScrollToTop);
+            window.scrollTo(0, currentScroll - currentScroll / 20);
+        }
+    }
+    
+    // When the user clicks on the button, smoothly scroll to the top of the document
+    scrollToTopBtn.onclick = function(e) {
+        e.preventDefault();
+        smoothScrollToTop();
+    };
 
 });
