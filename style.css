@@ -975,6 +975,18 @@ nav ul li a:hover::after {
     transition: all 0.3s ease;
 }
 
+.menu-toggle-active span:nth-child(1) {
+    transform: rotate(50deg) translate(5px, 5px);
+}
+
+.menu-toggle-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle-active span:nth-child(3) {
+    transform: rotate(-50deg) translate(5px, -5px);
+}
+
 @media screen and (max-width: 900px) {
     .menu-toggle {
         display: flex;

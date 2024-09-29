@@ -141,15 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('show');
-        menuToggle.classList.toggle('active');
+        menuToggle.classList.toggle('menu-toggle-active');
     });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+    // Close menu when clicking in a link
+    const navMenuLink = document.querySelectorAll('nav ul li a');
+    navMenuLink.forEach((link) => {
+        link.addEventListener('click', () => {
             navMenu.classList.remove('show');
-            menuToggle.classList.remove('active');
-        }
+            menuToggle.classList.remove('menu-toggle-active');
+        });
     });
 
     // Adjust particles for mobile devices
