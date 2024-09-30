@@ -23,10 +23,17 @@
     <button id="scrollToTopBtn">
         <svg height="1.2em" class="arrow" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path></svg>
       <p class="text">Back to Top</p>
-      </button>
+    </button>
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
     <div id="particles-js"></div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <span class="popup-close" onclick="closePopup()">&times;</span>
+        <h2 id="popup-title"></h2>
+        <p id="popup-message"></p>
+    </div>
 
     <header class="show-header">
         <div class="header-content">
@@ -382,6 +389,76 @@
         gtag('js', new Date());
 
         gtag('config', 'G-2M4JNFPY2N');
+    </script>
+
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script>
+        (function(){
+            emailjs.init({
+              publicKey: "1L1dyg1ZOHz64LUEP",
+            });
+        })();
+    </script>
+
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const popupTitle = document.getElementById('popup-title');
+        const popupMessage = document.getElementById('popup-message');
+
+        function showPopup(title, message, isError = false) {
+            popupTitle.textContent = title;
+            popupMessage.innerHTML = message; // Use innerHTML instead of textContent
+            popup.classList.remove('success', 'error');
+            popup.classList.add(isError ? 'error' : 'success');
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+            setTimeout(() => {
+                popup.classList.add('show', 'animate');
+                overlay.classList.add('show');
+            }, 10);
+        }
+
+        function closePopup() {
+            popup.classList.remove('show', 'animate');
+            overlay.classList.remove('show');
+            setTimeout(() => {
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 300);
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const message = formData.get('message');
+
+                console.log('Form submitted:', { name, email, message });
+
+                try {
+                    await emailjs.send('service_bv9tvha', 'template_qsji0kv', {
+                        name: name,
+                        email: email,
+                        message: message,
+                        reply_to: email,
+                        to_name: name // Include the sender's name in the email
+                    }, '1L1dyg1ZOHz64LUEP');
+
+                    showPopup('Success', `Thank you, ${name}! Your message has been sent. I will get back to you soon.`);
+                    contactForm.reset();
+                } catch (error) {
+                    console.error('Error sending email:', error);
+                    showPopup('Error', `Sorry, ${name}. There was an error sending your message. Please try again later.`, true);
+                }
+            });
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
